@@ -12,7 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.1.2
-  libusb: ^0.3.23+2
+  libusb:
+    url: https://github.com/wfinken/libusb.dart
   ffi: ^2.0.1
 
 dev_dependencies:
