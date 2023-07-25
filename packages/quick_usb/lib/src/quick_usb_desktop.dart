@@ -15,7 +15,7 @@ late Libusb _libusb;
 class QuickUsbWindows extends _QuickUsbDesktop {
   // For example/.dart_tool/flutter_build/generated_main.dart
   static registerWith() {
-    QuickUsbPlatform.instance = QuickUsbMacos();
+    QuickUsbPlatform.instance = QuickUsbWindows();
     _libusb = Libusb(DynamicLibrary.open('libusb-1.0.23.dll'));
   }
 }
@@ -321,5 +321,13 @@ class _QuickUsbDesktop extends QuickUsbPlatform {
     if (Platform.isLinux) {
       _libusb.libusb_set_auto_detach_kernel_driver(_devHandle!, enable ? 1 : 0);
     }
+  }
+}
+
+class QuickUsbDesktopPlatform {
+  static registerWith() {
+    if (Platform.isWindows) QuickUsbWindows.registerWith();
+    if (Platform.isMacOS) QuickUsbMacos.registerWith();
+    if (Platform.isLinux) QuickUsbLinux.registerWith();
   }
 }
