@@ -12,7 +12,7 @@ QuickUsbPlatform get _platform => QuickUsbPlatform.instance;
 class QuickUsb {
   static Future<bool> init() {
     QuickUsbDesktopPlatform.registerWith();
-    _platform.init();
+    return _platform.init();
   }
 
   static Future<void> exit() => _platform.exit();
